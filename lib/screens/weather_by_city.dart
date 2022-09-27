@@ -43,8 +43,10 @@ class _CityweatherState extends State<Cityweather> {
                 child: shim(context),
               );
             } else if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(const SnackBar(content: Text('No Internet')));
+              return const Center(
+                child: Text('Make sure your device has an active internet'),
               );
             } else {
               return Stack(
