@@ -42,6 +42,10 @@ class _CityweatherState extends State<Cityweather> {
                 highlightColor: Colors.white,
                 child: shim(context),
               );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
             } else {
               return Stack(
                 //Background-----------------------------------------------
@@ -77,11 +81,13 @@ class _CityweatherState extends State<Cityweather> {
                                     width:
                                         MediaQuery.of(context).size.width / 1.2,
                                     decoration: BoxDecoration(
-                                        color:
-                                            const Color.fromARGB(31, 65, 63, 63),
-                                        borderRadius: BorderRadius.circular(30)),
+                                        color: const Color.fromARGB(
+                                            31, 65, 63, 63),
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
                                     child: TextFormField(
-                                      style: const TextStyle(color: Colors.white),
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                       cursorColor: Colors.blue,
                                       controller: control,
                                       textCapitalization:
@@ -101,7 +107,8 @@ class _CityweatherState extends State<Cityweather> {
                                               )),
                                           label: const Text(
                                             'City',
-                                            style: TextStyle(color: Colors.white),
+                                            style:
+                                                TextStyle(color: Colors.white),
                                           ),
                                           border: const OutlineInputBorder(
                                               borderRadius: BorderRadius.all(
@@ -112,14 +119,20 @@ class _CityweatherState extends State<Cityweather> {
                                     height: h / 32,
                                   ),
                                   Text(
-                                    snapshot.data!.name.toString()=='Yamoussoukro'? 'City Not Found': snapshot.data!.name.toString(),
+                                    snapshot.data!.name.toString() ==
+                                            'Yamoussoukro'
+                                        ? 'City Not Found'
+                                        : snapshot.data!.name.toString(),
                                     style: const TextStyle(
                                         fontSize: 36,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.white),
                                   ),
                                   Text(
-                                  snapshot.data!.name.toString()=='Yamoussoukro'? 'Try Again': '${now.day.toString()}/${now.month.toString()}/${now.year.toString()}',
+                                    snapshot.data!.name.toString() ==
+                                            'Yamoussoukro'
+                                        ? 'Try Again'
+                                        : '${now.day.toString()}/${now.month.toString()}/${now.year.toString()}',
                                     style: const TextStyle(
                                         fontSize: 18, color: Colors.white),
                                   ),
@@ -197,7 +210,7 @@ class _CityweatherState extends State<Cityweather> {
                                       crossAxisCount: 2,
                                       mainAxisSpacing: 1,
                                       crossAxisSpacing: 1,
-                                      childAspectRatio: 6/3,
+                                      childAspectRatio: 6 / 3,
                                       children: [
                                         view(
                                             'Description',
